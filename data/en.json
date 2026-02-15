@@ -1,0 +1,299 @@
+{
+  "site": {
+    "name": "HYPERLIFT",
+    "description": "We build IT infrastructure for mass influence marketing. Turning views into revenue.",
+    "phone": "+7 (995) 500-00-00",
+    "yandexMetrikaId": ""
+  },
+  "contacts": {
+    "telegram": "@your_agency_manager",
+    "whatsapp": "+79955000000",
+    "instagram": "@your_agency",
+    "vk": "your_agency",
+    "email": "hello@your-agency.com"
+  },
+  "hero": {
+    "title1": "REACH",
+    "title2": "MILLIONS",
+    "title3": "IN MINUTES",
+    "subtitle": "We replace boring ads with live videos that crack algorithms. Only real content. Only results.",
+    "ctaPrimary": "Start Growth",
+    "ctaSecondary": "Our Cases",
+    "socialAvatars": [
+      "/uploads/1771032468624-grid_maria_new_1771030524055.png",
+      "/creator_julia_public_1771031028932.png",
+      "/uploads/1771032449062-case_fitness_new_v3_1771030473270.png"
+    ]
+  },
+  "sections": {
+    "problem": {
+      "tag": "The Problem",
+      "title": "Why classic ads",
+      "titleItalic": "don't work anymore",
+      "card1": {
+        "title": "Low TRUST barrier",
+        "desc": "Users have learned to ignore classic advertising. Your brand needs the voice of real people, not a narrator."
+      },
+      "card2": {
+        "title": "Banner blindness",
+        "desc": "The CTR of native ads (UGC) is 4 times higher than classic creatives. People watch what interests them."
+      },
+      "solution": "Our Solution"
+    },
+    "execution": {
+      "tag": "Execution",
+      "title": "From Brief to",
+      "titleItalic": "Viral Sales"
+    },
+    "arsenal": {
+      "tag": "Our Arsenal",
+      "title": "Formats that",
+      "titleItalic": "Dominate Feeds"
+    },
+    "value": {
+      "title": "Why do you",
+      "titleItalic": "need this?",
+      "subtitle": "We don’t just make it 'pretty'. We solve specific business pain points in 2024.",
+      "points": [
+        {
+          "title": "CAC Reduction",
+          "desc": "Organic reach in Reels and TikTok is free. This makes the cost per acquired customer 5-10 times cheaper than classic targeting."
+        },
+        {
+          "title": "Total Trust",
+          "desc": "UGC content is perceived as a friend's advice, not an ad. Conversion rates for such videos are on average 35-50% higher."
+        },
+        {
+          "title": "Everlasting Asset",
+          "desc": "You get full rights to the content. Use it in ads, on the website, or in product listings on Wildberries, Ozon, or Amazon without limits."
+        }
+      ]
+    },
+    "faq": "Frequently Asked Questions"
+  },
+  "creator_cta": {
+    "text": "Are you a creator? Earn with us",
+    "link": "/creators"
+  },
+  "stats": [
+    {
+      "label": "Active Creators",
+      "value": "5000+",
+      "trend": "+12% this week",
+      "color": "text-blue-400"
+    },
+    {
+      "label": "Monthly Reach",
+      "value": "25M+",
+      "trend": "+2.4M organic",
+      "color": "text-purple-400"
+    },
+    {
+      "label": "Average CPV",
+      "value": "$0.002",
+      "trend": "-15% cost drop",
+      "color": "text-primary"
+    },
+    {
+      "label": "Campaign Launch",
+      "value": "24h",
+      "trend": "Fastest in industry",
+      "color": "text-orange-400"
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Strategy & Scripts",
+      "text": "We don't just 'hand out products'. We analyze your niche and write viral scripts (Hooks) that grab attention from the 1st second."
+    },
+    {
+      "step": 2,
+      "title": "Creator Casting",
+      "text": "Our platform automatically selects performers based on your target audience. Moms, gamers, students, experts — we have access to thousands of micro-influencers."
+    },
+    {
+      "step": 3,
+      "title": "UGC Factory (Mass Production)",
+      "text": "Creators receive briefs and film content. Moderators check every video for sound quality, lighting, and compliance with brand guidelines."
+    },
+    {
+      "step": 4,
+      "title": "Launch Wave (Seeding)",
+      "text": "Hundreds of videos are published simultaneously with the right hashtags. Algorithms see a surge of interest and promote videos to 'Recommendations'."
+    },
+    {
+      "step": 5,
+      "title": "Analytics & Payment",
+      "text": "You get access to a dashboard. You see real reach and sales. You only pay for the result (KPI)."
+    }
+  ],
+  "formats": [
+    {
+      "title": "Unboxing",
+      "desc": "Honest emotion from opening a package. Removes 'expectation/reality' fear, increases trust in packaging and product quality.",
+      "icon": "Package"
+    },
+    {
+      "title": "Testimonial",
+      "desc": "Convincing reviews from regular people. The most powerful social proof tool.",
+      "icon": "MessageSquare"
+    },
+    {
+      "title": "Sketch / Entertainment",
+      "desc": "Product natively integrated into the story. Maximum reach and virality. Such videos are reposted to friends.",
+      "icon": "Theater"
+    },
+    {
+      "title": "Lifehacks / How-to",
+      "desc": "Unconventional product use. Shows product value, saved to 'Favorites'.",
+      "icon": "Lightbulb"
+    }
+  ],
+  "faq": {
+    "clients": [
+      {
+        "q": "How do you differ from a blogger exchange or a regular agency?",
+        "a": "We don't sell 'blogger placement'. We sell content production and distribution.\n\nRegular agencies look for one blogger with a million followers, pay them $1000 and hope for result. We use the same money to hire 50 micro-creators who create 50 different videos. This gives 10x more reach through Reels/TikTok algorithms and reduces risks. If one video doesn't 'hit', the other 49 will."
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "aesthetic-cosmetics",
+      "brand": "Aesthetic Cosmetics",
+      "category": "Beauty & Care",
+      "shortResult": "1.2M+ views",
+      "shortRoi": "450% ROI",
+      "image": "/ugc_case_beauty_cosmetics_v2_1770949503401_1771030220536.png",
+      "challenge": "A cosmetics brand faced high customer acquisition costs (CAC) in classic targeting. They needed to increase awareness of a new serum line and create 'social proof'.",
+      "solution": "We selected 50 micro-influencers with an 'aesthetic' appearance. Each received a brief to create an ASMR unboxing and demonstrate the skin's glow effect. Content was published over 2 weeks.",
+      "results": [
+        {
+          "label": "Total Reach",
+          "value": "1.2M+"
+        },
+        {
+          "label": "Saves",
+          "value": "45K"
+        },
+        {
+          "label": "Sales Growth",
+          "value": "+32%"
+        },
+        {
+          "label": "CAC Drop",
+          "value": "2.4x"
+        }
+      ],
+      "fullStory": "This case showed that for the beauty segment, visual aesthetics and 'natural' reviews are more important than follower counts. ASMR videos showed the highest watch depth."
+    },
+    {
+      "id": "tech-gadget-pro",
+      "brand": "Tech Gadget Pro",
+      "category": "Electronics",
+      "shortResult": "850K engagement",
+      "shortRoi": "380% ROI",
+      "image": "/ugc_case_tech_final_1771030677056.png",
+      "challenge": "Launching a complex technical gadget in the market. Users did not understand the value of the product from static banners.",
+      "solution": "A series of 'Lifehack' videos where creators showed how the gadget solves everyday problems. Used dynamic editing and trending sounds.",
+      "results": [
+        {
+          "label": "Engagement",
+          "value": "850K"
+        },
+        {
+          "label": "Web Visits",
+          "value": "120K"
+        },
+        {
+          "label": "ROI",
+          "value": "380%"
+        },
+        {
+          "label": "UGC Videos",
+          "value": "30+"
+        }
+      ],
+      "fullStory": "Focusing on functionality and 'real-life' demonstration allowed to generate demand within a week that exceeded all pre-order expectations."
+    },
+    {
+      "id": "fitness-nutri",
+      "brand": "Fitness Nutri",
+      "category": "Health & Sport",
+      "shortResult": "2.1M reach",
+      "shortRoi": "520% ROI",
+      "image": "/ugc_case_fitness_final_1771030692773.png",
+      "challenge": "The sports nutrition market is oversaturated. It was necessary to stand out from competitors and enter the 'healthy lifestyle' segment.",
+      "solution": "We launched a challenge among fitness trainers and sports enthusiasts. They created recipes using the brand's protein. This created a 'pro choice' effect.",
+      "results": [
+        {
+          "label": "Organic Reach",
+          "value": "2.1M"
+        },
+        {
+          "label": "Shares",
+          "value": "15K"
+        },
+        {
+          "label": "Customer LTV",
+          "value": "+18%"
+        },
+        {
+          "label": "Ad CTR",
+          "value": "4.2%"
+        }
+      ],
+      "fullStory": "Using different body types and fitness levels of creators helped the brand become 'one of their own' for a wide audience, not just for professional athletes."
+    }
+  ],
+  "creatorsPage": {
+    "title": "Film videos on your phone and earn.",
+    "subtitle": "Stable flow of orders from top brands. No searching for clients, no negotiations. You create — we pay.",
+    "image": "/ugc_creator_main_v1_1771031404523.png",
+    "cta": "Become a Creator",
+    "steps": [
+      {
+        "title": "Get a Task",
+        "desc": "Choose a brand you like. We'll pick a brief that matches your vibe."
+      },
+      {
+        "title": "Film Video",
+        "desc": "No complex equipment needed — just your smartphone and good lighting."
+      },
+      {
+        "title": "Get Paid",
+        "desc": "Payment for each video + bonuses. Weekly payouts to your preferred method."
+      }
+    ]
+  },
+  "homeImages": {
+    "businessValue": "/ugc_hero_creator_main_1771031330094.png",
+    "grid": [
+      {
+        "name": "Alex",
+        "img": "/creator_new_portrait_1_1771031474451.png"
+      },
+      {
+        "name": "Maria",
+        "img": "/ugc_creator_girl_v2_1771029978654.png"
+      },
+      {
+        "name": "Chris",
+        "img": "/ugc_creator_boy_v2_1771029993194.png"
+      },
+      {
+        "name": "Julia",
+        "img": "/grid_maria_new_1771030524055.png"
+      },
+      {
+        "name": "Dmitry",
+        "img": "/creator_portrait_1_1771031547964.png"
+      },
+      {
+        "name": "Ksenia",
+        "img": "/grid_alex_new_1771030508020.png"
+      }
+    ]
+  }
+}

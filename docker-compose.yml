@@ -1,0 +1,16 @@
+services:
+  ugc-agency:
+    build: .
+    container_name: ugs-agency
+    restart: always
+    ports:
+      - "3005:3000" # Используйте свободный порт на вашем VPS
+    volumes:
+      - ./data:/app/data # Важно для сохранения данных админ-панели
+    env_file:
+      - .env.local
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

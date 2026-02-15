@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Яков",
+    "contact": "@YLeevin",
+    "website": "http://localhost:3000/",
+    "budget": "50-150",
+    "type": "client",
+    "id": "1770975204280",
+    "createdAt": "2026-02-13T09:33:24.280Z",
+    "status": "new"
+  }
+]

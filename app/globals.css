@@ -1,0 +1,304 @@
+@import "tailwindcss";
+
+/* ============================================
+   HYPERLIFT — AURORA BRUTALISM DESIGN SYSTEM
+   Vivid gradients, bold typography, no boring black
+   ============================================ */
+
+@theme {
+  --color-background: #0a0118;
+  --color-foreground: #fafafa;
+  --color-primary: #a855f7;
+  --color-primary-foreground: #fafafa;
+  --color-card: rgba(255, 255, 255, 0.04);
+  --color-card-foreground: #fafafa;
+  --color-muted: #1e1b3a;
+  --color-muted-foreground: #a0a0c0;
+  --color-border: rgba(168, 85, 247, 0.12);
+  --color-ring: #a855f7;
+  --color-accent: #f97316;
+  --color-accent-foreground: #fafafa;
+  --color-destructive: #ef4444;
+  --color-input: rgba(255, 255, 255, 0.06);
+  --radius: 1rem;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ============================================
+   CONTAINER FIX — Tailwind v4 container doesn't
+   auto-center or add padding by default
+   ============================================ */
+
+.container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+/* ============================================
+   AURORA GRADIENT BACKGROUND — the star of the show
+   Deep violet → indigo → teal mesh gradient
+   ============================================ */
+
+body {
+  background: #0a0118;
+  /* Multi-layer gradient mesh */
+  background-image:
+    /* Top-left violet glow */
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(139, 92, 246, 0.25) 0%, transparent 60%),
+    /* Top-right magenta glow */
+    radial-gradient(ellipse 70% 50% at 90% 5%, rgba(236, 72, 153, 0.2) 0%, transparent 55%),
+    /* Center-left teal glow */
+    radial-gradient(ellipse 60% 40% at 5% 50%, rgba(20, 184, 166, 0.12) 0%, transparent 50%),
+    /* Bottom-right orange glow */
+    radial-gradient(ellipse 50% 40% at 85% 80%, rgba(249, 115, 22, 0.1) 0%, transparent 50%),
+    /* Bottom-left deep purple */
+    radial-gradient(ellipse 90% 50% at 20% 100%, rgba(88, 28, 135, 0.2) 0%, transparent 60%),
+    /* Base gradient */
+    linear-gradient(170deg, #0a0118 0%, #0f0526 30%, #0c0a2a 50%, #080620 70%, #0a0118 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--color-foreground);
+}
+
+/* Grain noise overlay for texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ============================================
+   GLASS CARDS — frosted glass on aurora bg
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.04) !important;
+  backdrop-filter: blur(20px) saturate(1.5) !important;
+  border: 1px solid rgba(168, 85, 247, 0.1) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   CARD GLOW — cards with gradient border + shimmer
+   ============================================ */
+
+.card-glow {
+  position: relative;
+  background: rgba(15, 10, 40, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(168, 85, 247, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), transparent 40%, transparent 60%, rgba(249, 115, 22, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.card-glow:hover {
+  border-color: rgba(168, 85, 247, 0.25);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.08), 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   GRADIENT TEXTS
+   ============================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 40%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-violet {
+  background: linear-gradient(135deg, #a855f7 0%, #c084fc 40%, #e879f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-aurora {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 30%, #f97316 60%, #eab308 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   AURORA GLOW BUTTON
+   ============================================ */
+
+.btn-aurora {
+  position: relative;
+  background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+  border: none;
+  color: white;
+  font-weight: 800;
+  transition: all 0.3s ease;
+}
+
+.btn-aurora:hover {
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.4), 0 0 60px rgba(236, 72, 153, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-aurora::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #a855f7, #ec4899, #f97316);
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+  z-index: -1;
+  filter: blur(12px);
+  opacity: 0.5;
+}
+
+/* ============================================
+   SECTION DIVIDER GLOW
+   ============================================ */
+
+.section-glow-top {
+  position: relative;
+}
+
+.section-glow-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.3), rgba(236, 72, 153, 0.2), transparent);
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 1, 24, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a855f7, #ec4899);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c084fc, #f472b6);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.2);
+}
+
+.text-glow-orange {
+  text-shadow: 0 0 20px rgba(249, 115, 22, 0.5), 0 0 40px rgba(249, 115, 22, 0.2);
+}
+
+/* Selection */
+::selection {
+  background: rgba(168, 85, 247, 0.3);
+  color: #fafafa;
+}
