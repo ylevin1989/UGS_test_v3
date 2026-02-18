@@ -1,14 +1,20 @@
 import { getContent } from "@/app/actions/content";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "HYPERLIFT | UGC Performance Agency No.1",
-  description: "Мы строим IT-инфраструктуру для массового инфлюенс-маркетинга. Превращаем просмотры в деньги через виральный UGC контент.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { lang } = await getContent();
+  return {
+    title: lang === "ru" ? "HYPERLIFT | UGC Performance Agency No.1" : "HYPERLIFT | UGC Performance Agency No.1",
+    description: lang === "ru"
+      ? "Мы строим IT-инфраструктуру для массового инфлюенс-маркетинга. Превращаем просмотры в деньги через виральный UGC контент."
+      : "We build IT infrastructure for mass influence marketing. Turning views into money through viral UGC content.",
+  };
+}
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/home/hero-section";
+import { ServiceSelection } from "@/components/home/service-selection";
 import { StatsSection } from "@/components/home/stats-section";
 import { CTASection } from "@/components/home/cta-section";
 import { Card } from "@/components/ui/card";
@@ -35,6 +41,7 @@ import {
 import { MarqueeTicker } from "@/components/ui/marquee-ticker";
 import Image from "next/image";
 import { ClientMotionWrapper } from "@/components/client-motion-wrapper";
+import { StickyCTA } from "@/components/ui/sticky-cta";
 
 const IconMap: any = {
   Package,
@@ -54,7 +61,8 @@ export default async function HomePage() {
     <>
       <Header phone={content.site.phone} currentLang={lang} />
       <main>
-        <HeroSection content={content} />
+        <HeroSection content={content} lang={lang} />
+        <ServiceSelection lang={lang} />
 
         <div className="relative -mt-16 mb-24 z-40">
           <MarqueeTicker
@@ -84,8 +92,8 @@ export default async function HomePage() {
 
             <div className="grid md:grid-cols-2 gap-6 mb-16">
               <Card className="p-10 card-glow rounded-3xl space-y-6 group">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg shadow-red-500/20">
-                  <Zap size={28} />
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg shadow-red-500/20" title="Проблема">
+                  <Zap size={28} aria-hidden="true" />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-black tracking-tighter">{sections.problem.card1.title}</h3>
                 <p className="text-zinc-400 text-base leading-relaxed">
@@ -93,8 +101,8 @@ export default async function HomePage() {
                 </p>
               </Card>
               <Card className="p-10 card-glow rounded-3xl space-y-6 group">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
-                  <Eye size={28} />
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20" title="Статистика">
+                  <Eye size={28} aria-hidden="true" />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-black tracking-tighter">{sections.problem.card2.title}</h3>
                 <p className="text-zinc-400 text-base leading-relaxed">
@@ -105,8 +113,8 @@ export default async function HomePage() {
 
             <div className="card-glow rounded-3xl p-8 md:p-12 text-center w-full relative overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500/40 to-transparent" />
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-green-400 flex items-center justify-center text-white mx-auto mb-6 shadow-lg shadow-yellow-500/20">
-                <Lightbulb size={28} />
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-yellow-500 to-green-400 flex items-center justify-center text-white mx-auto mb-6 shadow-lg shadow-yellow-500/20" title="Решение">
+                <Lightbulb size={28} aria-hidden="true" />
               </div>
               <h3 className="text-2xl md:text-3xl font-black mb-6 tracking-tight">{sections.problem.solution}</h3>
               <p className="text-lg md:text-xl leading-relaxed text-zinc-400 italic">
@@ -205,7 +213,7 @@ export default async function HomePage() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {(content.formats || CONTENT_FORMATS).map((format: any, idx: number) => {
                 const Icon = IconMap[format.icon] || Lightbulb;
                 const gradients = [
@@ -320,8 +328,8 @@ export default async function HomePage() {
             <Accordion type="single" collapsible className="space-y-3">
               {(content.faq?.clients || CLIENT_FAQ).map((item: any, idx: number) => (
                 <AccordionItem key={idx} value={`faq-${idx}`} className="border border-purple-500/8 bg-white/[0.02] rounded-2xl px-8 overflow-hidden hover:border-purple-500/20 transition-colors backdrop-blur-sm">
-                  <AccordionTrigger className="text-base font-bold py-5 hover:no-underline hover:text-purple-400 transition-colors">
-                    {item.q}
+                  <AccordionTrigger className="text-base md:text-lg font-bold py-5 hover:no-underline hover:text-purple-400 transition-colors group">
+                    <span className="group-data-[state=open]:text-purple-400 transition-colors text-left">{item.q}</span>
                   </AccordionTrigger>
                   <AccordionContent className="text-zinc-400 pb-5 leading-relaxed whitespace-pre-line">
                     {item.a}
@@ -331,6 +339,7 @@ export default async function HomePage() {
             </Accordion>
           </div>
         </section>
+        <StickyCTA lang={lang} />
       </main>
       <Footer lang={lang} />
     </>

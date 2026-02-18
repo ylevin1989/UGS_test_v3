@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   name: "HYPERLIFT",
-  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || "https://hyperlift.agency", // Change this when domain is active
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || "https://hyperlift.ru",
   description: {
     ru: "HYPERLIFT — IT-инфраструктура для массового инфлюенс-маркетинга. Создаем виральный UGC контент для TikTok, Reels и Shorts. Превращаем просмотры в продажи.",
     en: "HYPERLIFT — IT infrastructure for mass influence marketing. We create viral UGC content for TikTok, Reels, and Shorts. Turning views into sales.",
@@ -11,8 +11,8 @@ export const SITE_CONFIG = {
   },
   contact: {
     email: {
-      clients: "hello@hyperlift.agency",
-      creators: "creators@hyperlift.agency",
+      clients: "hello@hyperlift.ru",
+      creators: "creators@hyperlift.ru",
     },
     telegram: {
       manager: "@hyperlift_manager",

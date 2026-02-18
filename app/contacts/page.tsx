@@ -1,22 +1,21 @@
 import { getContent } from "@/app/actions/content";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Контакты",
-    description: "Свяжитесь с HYPERLIFT — обсудим ваш проект и создадим стратегию продвижения.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const result = await getContent();
+    const lang = result?.lang || "ru"; // Default to 'ru' if getContent fails or lang is not available
+    return {
+        title: lang === "ru" ? "Контакты | Свяжитесь с командой HYPERLIFT" : "Contact | Get in touch with the HYPERLIFT team",
+        description: lang === "ru"
+            ? "Готовы масштабировать ваш бренд? Свяжитесь с нами для консультации или расчета медиаплана. Мы работаем по всему миру."
+            : "Ready to scale your brand? Contact us for a consultation or media plan calculation. We work worldwide.",
+    };
+}
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CLIENT_FAQ } from "@/lib/constants";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger
-} from "@/components/ui/accordion";
 import { ContactModal } from "@/components/contact-modal";
 import { ClientMotionWrapper } from "@/components/client-motion-wrapper";
 import {
@@ -209,26 +208,6 @@ export default async function ContactsPage() {
                     </div>
                 </div>
 
-                {/* FAQ */}
-                <div className="container">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="font-display text-5xl md:text-7xl tracking-tight uppercase mb-12 text-center">
-                            <span className="gradient-text-violet">{lang === "ru" ? "ЧАСТЫЕ ВОПРОСЫ" : "FAQ"}</span>
-                        </h2>
-                        <Accordion type="single" collapsible className="space-y-3">
-                            {(content.faq?.clients || CLIENT_FAQ).map((item: any, idx: number) => (
-                                <AccordionItem key={idx} value={`faq-${idx}`} className="border border-purple-500/8 bg-white/[0.02] rounded-2xl px-8 overflow-hidden hover:border-purple-500/20 transition-colors backdrop-blur-sm">
-                                    <AccordionTrigger className="text-base font-bold py-5 hover:no-underline hover:text-purple-400 transition-colors">
-                                        {item.q}
-                                    </AccordionTrigger>
-                                    <AccordionContent className="text-zinc-400 pb-5 leading-relaxed whitespace-pre-line">
-                                        {item.a}
-                                    </AccordionContent>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
-                    </div>
-                </div>
             </main>
             <Footer lang={lang} />
         </>

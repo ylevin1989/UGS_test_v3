@@ -70,9 +70,9 @@ export function ContactModal({ type, trigger, lang = "ru" }: ContactModalProps) 
                     </DialogHeader>
 
                     {type === "client" ? (
-                        <ClientForm onSuccess={() => setOpen(false)} />
+                        <ClientForm onSuccess={() => setOpen(false)} lang={lang} />
                     ) : (
-                        <CreatorForm onSuccess={() => setOpen(false)} />
+                        <CreatorForm onSuccess={() => setOpen(false)} lang={lang} />
                     )}
                 </div>
             </DialogContent>

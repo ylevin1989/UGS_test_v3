@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LanguageSwitcher } from "./language-switcher";
 
 export function Header({ phone, currentLang = "ru" }: { phone?: string; currentLang?: string }) {
     const [scrolled, setScrolled] = useState(false);
@@ -19,10 +20,12 @@ export function Header({ phone, currentLang = "ru" }: { phone?: string; currentL
     }, []);
 
     const nav = currentLang === "ru" ? [
+        { name: "Главная", href: "/" },
         { name: "Кейсы", href: "/cases" },
         { name: "Креаторам", href: "/creators" },
         { name: "Контакты", href: "/contacts" },
     ] : [
+        { name: "Home", href: "/" },
         { name: "Cases", href: "/cases" },
         { name: "Creators", href: "/creators" },
         { name: "Contacts", href: "/contacts" },
@@ -56,7 +59,8 @@ export function Header({ phone, currentLang = "ru" }: { phone?: string; currentL
                 </nav>
 
                 {/* Actions */}
-                <div className="hidden lg:flex items-center gap-3">
+                <div className="hidden lg:flex items-center gap-6">
+                    <LanguageSwitcher currentLang={currentLang} />
 
                     {/* CTA */}
                     <ContactModal
@@ -72,7 +76,7 @@ export function Header({ phone, currentLang = "ru" }: { phone?: string; currentL
 
                 {/* Mobile toggle */}
                 <button
-                    className="lg:hidden text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors"
+                    className="lg:hidden text-white w-11 h-11 flex items-center justify-center rounded-full hover:bg-white/5 transition-colors"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     aria-label="Toggle menu"
                 >
@@ -111,6 +115,9 @@ export function Header({ phone, currentLang = "ru" }: { phone?: string; currentL
                                         </Button>
                                     }
                                 />
+                            </div>
+                            <div className="flex justify-center pt-6 border-t border-white/5">
+                                <LanguageSwitcher currentLang={currentLang} />
                             </div>
                         </div>
                     </motion.div>

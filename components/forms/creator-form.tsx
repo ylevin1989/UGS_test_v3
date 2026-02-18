@@ -12,11 +12,27 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface CreatorFormProps {
     onSuccess?: () => void;
+    lang?: string;
 }
 
-export function CreatorForm({ onSuccess }: CreatorFormProps) {
+export function CreatorForm({ onSuccess, lang = "ru" }: CreatorFormProps) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+    const t = {
+        nameLabel: lang === "ru" ? "Как тебя зовут?" : "What's your name?",
+        namePlaceholder: lang === "ru" ? "Твое имя" : "Your Name",
+        telegramLabel: lang === "ru" ? "Ник в Telegram" : "Telegram Handle",
+        telegramPlaceholder: lang === "ru" ? "@username" : "@username",
+        portfolioLabel: lang === "ru" ? "Портфолио (TikTok/Inst)" : "Portfolio (TikTok/Inst)",
+        portfolioPlaceholder: lang === "ru" ? "https://tiktok.com/@..." : "https://tiktok.com/@...",
+        phoneLabel: lang === "ru" ? "Номер телефона" : "Phone Number",
+        phonePlaceholder: lang === "ru" ? "+7 (999) 000-00-00" : "+1 (555) 000-00-00",
+        submitBtn: lang === "ru" ? "Отправить анкету" : "Send Application",
+        submitting: lang === "ru" ? "Отправка..." : "Sending...",
+        successMsg: lang === "ru" ? "Отлично! Мы добавили тебя в базу и скоро свяжемся." : "Great! We've added you to our database and will contact you soon.",
+        errorMsg: lang === "ru" ? "Ошибка. Попробуй еще раз или напиши нам в Телеграм." : "Error. Please try again or message us on Telegram."
+    };
 
     const {
         register,
@@ -49,10 +65,10 @@ export function CreatorForm({ onSuccess }: CreatorFormProps) {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <div className="space-y-6">
                 <div className="space-y-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-4">Как тебя зовут?</label>
+                    <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-4">{t.nameLabel}</label>
                     <Input
                         {...register("name")}
-                        placeholder="Твое имя"
+                        placeholder={t.namePlaceholder}
                         className="h-14 px-6 rounded-2xl bg-[#121212] border-white/5 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all text-lg placeholder:text-zinc-700"
                     />
                     {errors.name && (
@@ -63,10 +79,10 @@ export function CreatorForm({ onSuccess }: CreatorFormProps) {
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-4">Ник в Telegram</label>
+                    <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-4">{t.telegramLabel}</label>
                     <Input
                         {...register("telegram")}
-                        placeholder="@username"
+                        placeholder={t.telegramPlaceholder}
                         className="h-14 px-6 rounded-2xl bg-[#121212] border-white/5 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all text-lg placeholder:text-zinc-700"
                     />
                     {errors.telegram && (
@@ -77,10 +93,10 @@ export function CreatorForm({ onSuccess }: CreatorFormProps) {
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-4">Портфолио (TikTok/Inst)</label>
+                    <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-4">{t.portfolioLabel}</label>
                     <Input
                         {...register("portfolio")}
-                        placeholder="https://tiktok.com/@..."
+                        placeholder={t.portfolioPlaceholder}
                         className="h-14 px-6 rounded-2xl bg-[#121212] border-white/5 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all text-lg placeholder:text-zinc-700"
                     />
                     {errors.portfolio && (
@@ -91,10 +107,10 @@ export function CreatorForm({ onSuccess }: CreatorFormProps) {
                 </div>
 
                 <div className="space-y-2">
-                    <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-4">Номер телефона</label>
+                    <label className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-4">{t.phoneLabel}</label>
                     <Input
                         {...register("phone")}
-                        placeholder="+7 (999) 000-00-00"
+                        placeholder={t.phonePlaceholder}
                         className="h-14 px-6 rounded-2xl bg-[#121212] border-white/5 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all text-lg placeholder:text-zinc-700"
                     />
                     {errors.phone && (
@@ -114,11 +130,11 @@ export function CreatorForm({ onSuccess }: CreatorFormProps) {
                 {isSubmitting ? (
                     <div className="flex items-center">
                         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Отправка...
+                        {t.submitting}
                     </div>
                 ) : (
                     <div className="flex items-center">
-                        Отправить анкету
+                        {t.submitBtn}
                         <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
                 )}
@@ -132,7 +148,7 @@ export function CreatorForm({ onSuccess }: CreatorFormProps) {
                         className="p-4 bg-primary/10 border border-primary/20 rounded-2xl flex items-center space-x-3 text-primary"
                     >
                         <CheckCircle2 size={24} />
-                        <span className="text-sm font-bold tracking-tight">Отлично! Мы добавили тебя в базу и скоро свяжемся.</span>
+                        <span className="text-sm font-bold tracking-tight">{t.successMsg}</span>
                     </motion.div>
                 )}
 
@@ -143,7 +159,7 @@ export function CreatorForm({ onSuccess }: CreatorFormProps) {
                         className="p-4 bg-destructive/10 border border-destructive/20 rounded-2xl flex items-center space-x-3 text-destructive"
                     >
                         <AlertCircle size={24} />
-                        <span className="text-sm font-bold tracking-tight">Ошибка. Попробуй еще раз или напиши нам в Телеграм.</span>
+                        <span className="text-sm font-bold tracking-tight">{t.errorMsg}</span>
                     </motion.div>
                 )}
             </AnimatePresence>

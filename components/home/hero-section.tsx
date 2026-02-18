@@ -7,16 +7,15 @@ import Image from "next/image";
 import { ArrowRight, Play, Sparkles, Star, Zap } from "lucide-react";
 import { CreatorGrid } from "@/components/home/creator-grid";
 
-export function HeroSection({ content }: { content: any }) {
+export function HeroSection({ content, lang = "ru" }: { content: any; lang?: string }) {
     const hero = content.hero;
-    const lang = hero?.lang || "ru";
 
     return (
         <section className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-20">
             {/* Floating aurora blobs */}
-            <div className="absolute top-20 left-[10%] w-[500px] h-[500px] rounded-full bg-purple-600/15 blur-[120px] animate-[float_8s_ease-in-out_infinite]" />
-            <div className="absolute bottom-20 right-[5%] w-[400px] h-[400px] rounded-full bg-pink-500/10 blur-[100px] animate-[float_10s_ease-in-out_infinite_1s]" />
-            <div className="absolute top-[40%] right-[30%] w-[300px] h-[300px] rounded-full bg-orange-500/8 blur-[80px] animate-[float_12s_ease-in-out_infinite_2s]" />
+            <div className="absolute top-20 left-[10%] w-[500px] h-[500px] rounded-full bg-purple-600/15 blur-[120px] animate-[float_8s_ease-in-out_infinite] transform-gpu pointer-events-none" />
+            <div className="absolute bottom-20 right-[5%] w-[400px] h-[400px] rounded-full bg-pink-500/10 blur-[100px] animate-[float_10s_ease-in-out_infinite_1s] transform-gpu pointer-events-none" />
+            <div className="absolute top-[40%] right-[30%] w-[300px] h-[300px] rounded-full bg-orange-500/8 blur-[80px] animate-[float_12s_ease-in-out_infinite_2s] transform-gpu pointer-events-none" />
 
             <div className="container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -43,10 +42,11 @@ export function HeroSection({ content }: { content: any }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.15 }}
                         >
-                            <h1 className="font-display text-[3.5rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] leading-[0.85] tracking-tight uppercase mb-8">
-                                <span className="block text-white">{hero?.titleLine1 || (lang === "ru" ? "ПРЕВРАЩАЕМ" : "TURNING")}</span>
-                                <span className="block gradient-text-aurora">{hero?.titleLine2 || (lang === "ru" ? "ПРОСМОТРЫ" : "VIEWS")}</span>
-                                <span className="block text-white">{hero?.titleLine3 || (lang === "ru" ? "В ДЕНЬГИ" : "INTO MONEY")}</span>
+                            <h1 className="font-display text-[3rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] leading-[0.85] tracking-tight uppercase mb-8">
+                                <span className="block text-white text-[1.25rem] sm:text-[2rem] md:text-[2.5rem] mb-2 gradient-text-violet lowercase font-sans tracking-normal opacity-80">UGC Performance Agency No.1</span>
+                                <span className="block text-white">{hero?.title1 || (lang === "ru" ? "ПРЕВРАЩАЕМ" : "TURNING")}</span>
+                                <span className="block gradient-text-aurora">{hero?.title2 || (lang === "ru" ? "ПРОСМОТРЫ" : "VIEWS")}</span>
+                                <span className="block text-white">{hero?.title3 || (lang === "ru" ? "В ДЕНЬГИ" : "INTO MONEY")}</span>
                             </h1>
                         </ClientMotionWrapper>
 
@@ -75,8 +75,8 @@ export function HeroSection({ content }: { content: any }) {
                                 type="client"
                                 lang={lang}
                                 trigger={
-                                    <Button size="lg" className="btn-aurora rounded-full px-10 h-14 text-lg group cursor-pointer">
-                                        {hero?.ctaPrimary || (lang === "ru" ? "Запустить рекламу" : "Launch ads")}
+                                    <Button size="lg" className="btn-aurora rounded-full px-8 md:px-10 h-12 md:h-14 text-base md:text-lg group cursor-pointer">
+                                        {hero?.ctaPrimary || (lang === "ru" ? "Запустить рост" : "Launch ads")}
                                         <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
                                     </Button>
                                 }
@@ -85,7 +85,7 @@ export function HeroSection({ content }: { content: any }) {
                                 type="creator"
                                 lang={lang}
                                 trigger={
-                                    <Button size="lg" variant="outline" className="rounded-full px-10 h-14 text-lg border-purple-500/30 text-purple-300 hover:bg-purple-500/10 hover:border-purple-500/50 cursor-pointer group">
+                                    <Button size="lg" variant="outline" className="rounded-full px-8 md:px-10 h-12 md:h-14 text-base md:text-lg border-purple-500/30 text-purple-300 hover:bg-purple-500/10 hover:border-purple-500/50 cursor-pointer group">
                                         {hero?.ctaSecondary || (lang === "ru" ? "Стать креатором" : "Become creator")}
                                         <Star size={18} className="ml-2 group-hover:text-yellow-400 transition-colors" />
                                     </Button>

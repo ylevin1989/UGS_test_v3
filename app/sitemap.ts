@@ -11,6 +11,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/cases',
         '/creators',
         '/contacts',
+        '/ugc-classic',
+        '/ai-content',
     ];
 
     return routes.map((route) => ({

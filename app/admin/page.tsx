@@ -23,8 +23,10 @@ import {
     Layers,
     Briefcase,
     Menu,
-    X
+    X,
+    LogOut
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { Logo } from "@/components/logo";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -53,6 +55,18 @@ export default function AdminPage() {
     const [saving, setSaving] = useState(false);
     const [activeSection, setActiveSection] = useState("general");
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const router = useRouter();
+
+    const handleLogout = async () => {
+        try {
+            await fetch("/api/auth/logout", { method: "POST" });
+            toast.success("Logged out successfully");
+            router.push("/admin/login");
+            router.refresh();
+        } catch (error) {
+            toast.error("Failed to logout");
+        }
+    };
 
     useEffect(() => {
         async function load() {
@@ -876,7 +890,7 @@ export default function AdminPage() {
                         ))}
                     </div>
 
-                    <div className="mt-8 pt-8 border-t border-white/5">
+                    <div className="mt-8 pt-8 border-t border-white/5 space-y-4">
                         <div className="p-4 rounded-2xl bg-zinc-900/50 border border-white/5">
                             <p className="text-[10px] font-black uppercase tracking-widest text-zinc-500 mb-2">System Status</p>
                             <div className="flex items-center space-x-2">
@@ -884,6 +898,14 @@ export default function AdminPage() {
                                 <span className="text-xs font-bold">Online</span>
                             </div>
                         </div>
+
+                        <button
+                            onClick={handleLogout}
+                            className="w-full flex items-center space-x-3 px-4 py-3.5 rounded-2xl text-zinc-500 hover:bg-red-500/10 hover:text-red-500 transition-all group"
+                        >
+                            <LogOut size={18} className="group-hover:text-red-500" />
+                            <span className="text-xs font-black uppercase tracking-tight">Logout</span>
+                        </button>
                     </div>
                 </aside>
 
@@ -929,10 +951,17 @@ export default function AdminPage() {
                                         </button>
                                     ))}
                                 </div>
-                                <div className="mt-auto pt-6 border-t border-white/5">
+                                <div className="mt-auto pt-6 border-t border-white/5 space-y-4">
                                     <Link href="/" className="flex items-center text-sm font-bold text-zinc-500 px-4 py-2">
                                         <ArrowLeft size={16} className="mr-2" /> Вернуться на сайт
                                     </Link>
+                                    <button
+                                        onClick={handleLogout}
+                                        className="w-full flex items-center space-x-3 px-4 py-4 rounded-2xl text-zinc-500 hover:bg-red-500/10 hover:text-red-500 transition-all group"
+                                    >
+                                        <LogOut size={20} className="group-hover:text-red-500" />
+                                        <span className="text-sm font-black uppercase tracking-tight">Logout</span>
+                                    </button>
                                 </div>
                             </motion.aside>
                         </>

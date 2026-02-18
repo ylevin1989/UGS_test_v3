@@ -1,10 +1,15 @@
 import { getContent } from "@/app/actions/content";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Креаторам",
-    description: "Присоединяйтесь к команде HYPERLIFT — создавайте виральный контент и зарабатывайте с нами.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const { lang } = await getContent();
+    return {
+        title: lang === "ru" ? "Стань креатором | Зарабатывай на создании UGC | HYPERLIFT" : "Become a Creator | Earn by creating UGC | HYPERLIFT",
+        description: lang === "ru"
+            ? "Присоединяйся к базе HYPERLIFT и делай контент для топ-брендов. Стабильный поток заказов, быстрые выплаты и поддержка на всех этапах."
+            : "Join the HYPERLIFT database and create content for top brands. Steady flow of orders, fast payouts, and support at every stage.",
+    };
+}
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";

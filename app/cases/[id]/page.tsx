@@ -15,6 +15,29 @@ export async function generateStaticParams() {
     }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const result = await getContent();
+    const lang = result?.lang || "ru";
+    const cases = result?.data?.cases || CASE_STUDIES;
+    const caseItem = cases.find((c: any) => c.id === id);
+
+    if (!caseItem) return { title: "Case Not Found" };
+
+    const title = `${caseItem.brand} | ${caseItem.category} Case Study | HYPERLIFT`;
+    const description = caseItem.challenge;
+
+    return {
+        title,
+        description,
+        openGraph: {
+            title,
+            description,
+            images: [caseItem.image],
+        },
+    };
+}
+
 export default async function CaseDetailsPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const result = await getContent();

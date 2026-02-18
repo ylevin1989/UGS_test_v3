@@ -10,10 +10,15 @@ import { ContactModal } from "@/components/contact-modal";
 import { ClientMotionWrapper } from "@/components/client-motion-wrapper";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Кейсы | HYPERLIFT",
-    description: "Наши истории успеха. Посмотрите, как мы масштабируем бренды через виральный UGC контент и перфоманс маркетинг.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const { lang } = await getContent();
+    return {
+        title: lang === "ru" ? "Кейсы | Наши истории успеха и результаты | HYPERLIFT" : "Cases | Our Success Stories and Results | HYPERLIFT",
+        description: lang === "ru"
+            ? "Посмотрите, как HYPERLIFT масштабирует бренды. Реальные кейсы по внедрению UGC и ИИ-контента с высокими показателями ROMI и охватов."
+            : "See how HYPERLIFT scales brands. Real-world cases of UGC and AI-content implementation with high ROMI and reach.",
+    };
+}
 
 export default async function CasesPage() {
     const result = await getContent();
