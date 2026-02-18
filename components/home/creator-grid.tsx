@@ -78,7 +78,7 @@ export function CreatorGrid({ content }: { content: any }) {
             <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-1/2 -left-6 lg:-left-12 z-30 glass px-4 py-2 lg:px-6 lg:py-4 rounded-2xl lg:rounded-3xl border-purple-500/20 shadow-2xl shadow-purple-500/5 min-w-[140px] lg:min-w-[180px] hidden sm:block"
+                className="absolute top-1/2 -left-6 lg:-left-12 z-30 glass px-4 py-2 lg:px-6 lg:py-4 rounded-2xl lg:rounded-3xl border-purple-500/20 shadow-2xl shadow-purple-500/5 min-w-[140px] lg:min-w-[180px]"
             >
                 <div className="flex items-center space-x-2 lg:space-x-3">
                     <div className="w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-[#A78BFA] animate-pulse" />

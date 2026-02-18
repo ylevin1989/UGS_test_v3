@@ -115,7 +115,7 @@ export function HeroSection({ content, lang = "ru" }: { content: any; lang?: str
                     </div>
 
                     {/* Right — Creator Grid */}
-                    <div className="hidden lg:block">
+                    <div className="mt-12 lg:mt-0 lg:block">
                         <CreatorGrid content={content} />
                     </div>
                 </div>
