@@ -9,7 +9,7 @@ services:
       - ./data:/app/data
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.hyperlift.rule=Host(`ugs.uno-ai.pw`)"
+      - "traefik.http.routers.hyperlift.rule=Host(`hyperlift.ru`) || Host(`www.hyperlift.ru`)"
       - "traefik.http.routers.hyperlift.entrypoints=websecure"
       - "traefik.http.routers.hyperlift.tls=true"
       - "traefik.http.routers.hyperlift.tls.certresolver=mytlschallenge"
