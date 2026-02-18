@@ -1,16 +1,22 @@
 services:
-  ugc-agency:
+  app:
     build: .
-    container_name: ugs-agency
+    container_name: hyperlift-app
     restart: always
-    ports:
-      - "3005:3000" # Используйте свободный порт на вашем VPS
+    environment:
+      - NODE_ENV=production
     volumes:
-      - ./data:/app/data # Важно для сохранения данных админ-панели
-    env_file:
-      - .env.local
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+      - ./data:/app/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.hyperlift.rule=Host(`ugs.uno-ai.pw`)"
+      - "traefik.http.routers.hyperlift.entrypoints=websecure"
+      - "traefik.http.routers.hyperlift.tls=true"
+      - "traefik.http.routers.hyperlift.tls.certresolver=mytlschallenge"
+      - "traefik.http.services.hyperlift.loadbalancer.server.port=3000"
+    networks:
+      - traefik_network
+
+networks:
+  traefik_network:
+    external: true
