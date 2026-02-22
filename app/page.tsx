@@ -16,6 +16,8 @@ import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/home/hero-section";
 import { ServiceSelection } from "@/components/home/service-selection";
 import { StatsSection } from "@/components/home/stats-section";
+import { SafetySection } from "@/components/home/safety-section";
+import { PricingTeaser } from "@/components/home/pricing-teaser";
 import { CTASection } from "@/components/home/cta-section";
 import { Card } from "@/components/ui/card";
 import {
@@ -316,6 +318,10 @@ export default async function HomePage() {
             speed={40}
           />
         </div>
+
+        <PricingTeaser lang={lang} />
+
+        <SafetySection lang={lang} />
 
         <CTASection lang={lang} />
 

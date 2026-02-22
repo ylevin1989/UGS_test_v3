@@ -22,11 +22,13 @@ export function Header({ phone, currentLang = "ru" }: { phone?: string; currentL
     const nav = currentLang === "ru" ? [
         { name: "Главная", href: "/" },
         { name: "Кейсы", href: "/cases" },
+        { name: "Тарифы", href: "/pricing" },
         { name: "Креаторам", href: "/creators" },
         { name: "Контакты", href: "/contacts" },
     ] : [
         { name: "Home", href: "/" },
         { name: "Cases", href: "/cases" },
+        { name: "Pricing", href: "/pricing" },
         { name: "Creators", href: "/creators" },
         { name: "Contacts", href: "/contacts" },
     ];
