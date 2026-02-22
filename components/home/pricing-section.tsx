@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket, TrendingUp, Heart, Cpu, Building2, ChevronRight, Shield } from "lucide-react";
+import { Rocket, TrendingUp, Heart, Cpu, Building2, ChevronRight, Zap } from "lucide-react";
 import { ClientMotionWrapper } from "@/components/client-motion-wrapper";
 
 interface PricingPlan {
@@ -17,89 +17,22 @@ interface PricingPlan {
   bestFor: string;
 }
 
-export function PricingSection({ lang = "ru" }: { lang?: string }) {
-  const plans: PricingPlan[] = [
-    {
-      id: "start",
-      name: "HYPERLIFT START",
-      tagline: lang === "ru" ? "Запуск контент-завода" : "Launch content factory",
-      icon: Rocket,
-      gradient: "from-purple-600 to-violet-500",
-      shadowColor: "shadow-purple-500/20",
-      borderColor: "border-purple-500/20 hover:border-purple-500/50",
-      levels: [
-        { level: "Start", price: "180 000 ₽" },
-        { level: "Growth", price: "250 000 ₽" },
-        { level: "Scale", price: "350 000 ₽" },
-      ],
-      creatorBudget: lang === "ru" ? "от 150–200 тыс ₽" : "from 150–200K ₽",
-      bestFor: lang === "ru" ? "Брендам, которые хотят начать" : "Brands ready to start",
-    },
-    {
-      id: "scale",
-      name: "HYPERLIFT SCALE",
-      tagline: lang === "ru" ? "Креаторы + AI" : "Creators + AI",
-      icon: TrendingUp,
-      gradient: "from-pink-600 to-rose-500",
-      shadowColor: "shadow-pink-500/20",
-      borderColor: "border-pink-500/20 hover:border-pink-500/50",
-      levels: [
-        { level: "Start", price: "300 000 ₽" },
-        { level: "Growth", price: "450 000 ₽" },
-        { level: "Scale", price: "650 000 ₽" },
-      ],
-      creatorBudget: lang === "ru" ? "от 200–500 тыс ₽" : "from 200–500K ₽",
-      bestFor: lang === "ru" ? "Брендам, которым нужен рост охватов" : "Brands needing reach growth",
-    },
-    {
-      id: "trust",
-      name: "HYPERLIFT TRUST",
-      tagline: lang === "ru" ? "Креаторы + микроблогеры" : "Creators + micro-bloggers",
-      icon: Heart,
-      gradient: "from-orange-500 to-amber-500",
-      shadowColor: "shadow-orange-500/20",
-      borderColor: "border-orange-500/20 hover:border-orange-500/50",
-      levels: [
-        { level: "Start", price: "280 000 ₽" },
-        { level: "Growth", price: "420 000 ₽" },
-        { level: "Scale", price: "600 000 ₽" },
-      ],
-      creatorBudget: lang === "ru" ? "Бюджет блогеров отдельно" : "Blogger budget separate",
-      bestFor: lang === "ru" ? "Брендам с товарами и e-commerce" : "Product & e-commerce brands",
-    },
-    {
-      id: "ai",
-      name: "HYPERLIFT AI",
-      tagline: lang === "ru" ? "Контент-завод на базе ИИ" : "AI-powered content factory",
-      icon: Cpu,
-      gradient: "from-cyan-500 to-blue-500",
-      shadowColor: "shadow-cyan-500/20",
-      borderColor: "border-cyan-500/20 hover:border-cyan-500/50",
-      levels: [
-        { level: "Start", price: "120 000 ₽" },
-        { level: "Growth", price: "200 000 ₽" },
-        { level: "Scale", price: "300 000 ₽" },
-      ],
-      creatorBudget: lang === "ru" ? "Бюджет креаторов не нужен" : "No creator budget needed",
-      bestFor: lang === "ru" ? "Стартапам и тестам гипотез" : "Startups & hypothesis testing",
-    },
-    {
-      id: "enterprise",
-      name: "HYPERLIFT ENTERPRISE",
-      tagline: lang === "ru" ? "Контент-завод под ключ" : "Turnkey content factory",
-      icon: Building2,
-      gradient: "from-yellow-500 to-green-400",
-      shadowColor: "shadow-yellow-500/20",
-      borderColor: "border-yellow-500/20 hover:border-yellow-500/50",
-      levels: [
-        { level: "Start", price: "700 000 ₽" },
-        { level: "Growth", price: "1 000 000 ₽" },
-        { level: "Scale", price: "1.5–2 млн ₽" },
-      ],
-      creatorBudget: lang === "ru" ? "от 500 тыс ₽" : "from 500K ₽",
-      bestFor: lang === "ru" ? "Средним и крупным брендам" : "Medium & large brands",
-    },
-  ];
+export function PricingSection({ lang = "ru", plans = [] }: { lang?: string, plans?: any[] }) {
+  const getIcon = (name: string) => {
+    switch (name) {
+      case 'Rocket': return Rocket;
+      case 'TrendingUp': return TrendingUp;
+      case 'Heart': return Heart;
+      case 'Cpu': return Cpu;
+      case 'Building2': return Building2;
+      default: return Zap;
+    }
+  };
+
+  const parsedPlans = (plans || []).map(p => ({
+    ...p,
+    icon: getIcon(p.iconName || 'Zap')
+  }));
 
   return (
     <section id="pricing" className="py-12 relative overflow-hidden">
@@ -110,12 +43,12 @@ export function PricingSection({ lang = "ru" }: { lang?: string }) {
       <div className="container">
         {/* Plans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {plans.slice(0, 3).map((plan, idx) => (
+          {parsedPlans.slice(0, 3).map((plan, idx) => (
             <PricingCard key={plan.id} plan={plan} idx={idx} lang={lang} />
           ))}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
-          {plans.slice(3).map((plan, idx) => (
+          {parsedPlans.slice(3).map((plan, idx) => (
             <PricingCard key={plan.id} plan={plan} idx={idx + 3} lang={lang} />
           ))}
         </div>

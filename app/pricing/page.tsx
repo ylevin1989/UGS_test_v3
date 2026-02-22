@@ -46,7 +46,7 @@ export default async function PricingPage() {
                     </div>
                 </section>
 
-                <PricingSection lang={lang} />
+                <PricingSection lang={lang} plans={content.pricing_plans} />
 
                 <SafetySection lang={lang} />
 

@@ -319,7 +319,7 @@ export default async function HomePage() {
           />
         </div>
 
-        <PricingTeaser lang={lang} />
+        <PricingTeaser lang={lang} plans={content.pricing_plans} />
 
         <SafetySection lang={lang} />
 

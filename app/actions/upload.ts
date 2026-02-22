@@ -1,7 +1,6 @@
 "use server";
 
-import fs from "fs/promises";
-import path from "path";
+import { createClient } from "@/utils/supabase/server";
 
 export async function uploadImage(formData: FormData) {
     try {
@@ -10,26 +9,34 @@ export async function uploadImage(formData: FormData) {
             return { success: false, error: "No file provided" };
         }
 
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
+        const supabase = await createClient();
 
         // Create unique filename
         const filename = `${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
-        const uploadDir = path.join(process.cwd(), "public", "uploads");
 
-        // Ensure directory exists
-        try {
-            await fs.access(uploadDir);
-        } catch {
-            await fs.mkdir(uploadDir, { recursive: true });
+        // We use from() to select the bucket and upload() to stream the file to it
+        const { data, error } = await supabase
+            .storage
+            .from('uploads')
+            .upload(filename, file, {
+                cacheControl: '3600',
+                upsert: false
+            });
+
+        if (error) {
+            console.error("Supabase storage error:", error);
+            throw error;
         }
 
-        const filePath = path.join(uploadDir, filename);
-        await fs.writeFile(filePath, buffer);
+        // We get public URL for the uploaded file
+        const { data: publicUrlData } = supabase
+            .storage
+            .from('uploads')
+            .getPublicUrl(filename);
 
         return {
             success: true,
-            url: `/uploads/${filename}`
+            url: publicUrlData.publicUrl
         };
     } catch (error) {
         console.error("Upload error:", error);

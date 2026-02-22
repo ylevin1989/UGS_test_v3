@@ -24,7 +24,9 @@ import {
     Briefcase,
     Menu,
     X,
-    LogOut
+    LogOut,
+    Users,
+    CreditCard
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Logo } from "@/components/logo";
@@ -32,6 +34,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ImageUpload } from "@/components/admin/image-upload";
 import { LeadsList } from "@/components/admin/leads-list";
+import { UsersList } from "@/components/admin/users-list";
 
 const SECTIONS = [
     { id: "general", label: "Общие", icon: LayoutDashboard },
@@ -43,8 +46,10 @@ const SECTIONS = [
     { id: "creatorsPage", label: "Креаторам", icon: Zap },
     { id: "homeGrid", label: "Сетка Героев", icon: Layers },
     { id: "leads", label: "Заявки", icon: MessageCircle },
+    { id: "pricing", label: "Тарифы и Пакеты", icon: Layers },
     { id: "faq", label: "FAQ", icon: MessageCircle },
     { id: "contacts", label: "Контакты", icon: Mail },
+    { id: "users", label: "Пользователи", icon: Users },
 ];
 
 export default function AdminPage() {
@@ -587,6 +592,101 @@ export default function AdminPage() {
                 );
             case "leads":
                 return <LeadsList />;
+            case "users":
+                return <UsersList />;
+            case "pricing":
+                return (
+                    <div className="space-y-6">
+                        <div className="flex justify-between items-center mb-8">
+                            <h2 className="text-2xl font-black uppercase tracking-tight text-white font-black italic text-primary">Тарифы и Пакеты</h2>
+                        </div>
+                        <div className="space-y-6">
+                            {(content.pricing_plans || []).map((plan: any, idx: number) => (
+                                <Card key={plan.id} className="p-6 glass border-white/10 space-y-4">
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Название тарифа</label>
+                                            <Input
+                                                value={plan.name}
+                                                onChange={(e) => {
+                                                    const newPlans = [...content.pricing_plans];
+                                                    newPlans[idx].name = e.target.value;
+                                                    updateNested('pricing_plans', newPlans);
+                                                }}
+                                                className="bg-zinc-900 border-white/10 rounded-xl"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Описание (Tagline)</label>
+                                            <Input
+                                                value={plan.tagline}
+                                                onChange={(e) => {
+                                                    const newPlans = [...content.pricing_plans];
+                                                    newPlans[idx].tagline = e.target.value;
+                                                    updateNested('pricing_plans', newPlans);
+                                                }}
+                                                className="bg-zinc-900 border-white/10 rounded-xl"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <h4 className="text-sm font-bold text-white mt-4">Уровни (Start, Growth, Scale)</h4>
+                                    <div className="space-y-2 pl-4 border-l border-white/10">
+                                        {(plan.levels || []).map((levelItem: any, lIdx: number) => (
+                                            <div key={lIdx} className="flex gap-2 items-center">
+                                                <Input
+                                                    value={levelItem.level}
+                                                    onChange={(e) => {
+                                                        const newPlans = [...content.pricing_plans];
+                                                        newPlans[idx].levels[lIdx].level = e.target.value;
+                                                        updateNested('pricing_plans', newPlans);
+                                                    }}
+                                                    className="bg-zinc-900 border-white/10 w-1/3 rounded-xl h-8 text-xs"
+                                                />
+                                                <Input
+                                                    value={levelItem.price}
+                                                    onChange={(e) => {
+                                                        const newPlans = [...content.pricing_plans];
+                                                        newPlans[idx].levels[lIdx].price = e.target.value;
+                                                        updateNested('pricing_plans', newPlans);
+                                                    }}
+                                                    className="bg-zinc-900 border-white/10 flex-1 rounded-xl h-8 text-xs font-bold"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="grid md:grid-cols-2 gap-4 mt-4">
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Бюджет креаторов</label>
+                                            <Input
+                                                value={plan.creatorBudget}
+                                                onChange={(e) => {
+                                                    const newPlans = [...content.pricing_plans];
+                                                    newPlans[idx].creatorBudget = e.target.value;
+                                                    updateNested('pricing_plans', newPlans);
+                                                }}
+                                                className="bg-zinc-900 border-white/10 rounded-xl"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Для кого подходит</label>
+                                            <Input
+                                                value={plan.bestFor}
+                                                onChange={(e) => {
+                                                    const newPlans = [...content.pricing_plans];
+                                                    newPlans[idx].bestFor = e.target.value;
+                                                    updateNested('pricing_plans', newPlans);
+                                                }}
+                                                className="bg-zinc-900 border-white/10 rounded-xl"
+                                            />
+                                        </div>
+                                    </div>
+                                </Card>
+                            ))}
+                        </div>
+                    </div>
+                );
             case "faq":
                 return (
                     <div className="space-y-12">

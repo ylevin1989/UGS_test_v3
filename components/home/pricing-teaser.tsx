@@ -5,7 +5,11 @@ import { ArrowRight, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ClientMotionWrapper } from "@/components/client-motion-wrapper";
 
-export function PricingTeaser({ lang = "ru" }: { lang?: string }) {
+export function PricingTeaser({ lang = "ru", plans = [] }: { lang?: string, plans?: any[] }) {
+    // Get the first plan's first level price as a fallback if plans is empty
+    const startPrice = plans?.[0]?.levels?.[0]?.price || (lang === "ru" ? "180 000 ₽" : "180,000 ₽");
+    const tagline = plans?.[0]?.tagline || (lang === "ru" ? "Запуск контент-завода" : "Content factory launch");
+
     return (
         <section className="py-20 relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600/5 rounded-full blur-[150px] -z-10" />
@@ -30,13 +34,9 @@ export function PricingTeaser({ lang = "ru" }: { lang?: string }) {
                         {/* Text */}
                         <div className="flex-1 text-center md:text-left space-y-3">
                             <h3 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight">
-                                {lang === "ru"
-                                    ? "Запуск контент-завода"
-                                    : "Content factory launch"}
+                                {tagline}
                                 <span className="gradient-text-aurora block md:inline md:ml-2">
-                                    {lang === "ru"
-                                        ? "— от 180 000 ₽ / мес"
-                                        : "— from 180,000 ₽ / mo"}
+                                    {lang === "ru" ? `— от ${startPrice} / мес` : `— from ${startPrice} / mo`}
                                 </span>
                             </h3>
                             <p className="text-zinc-400 text-sm md:text-base max-w-lg">

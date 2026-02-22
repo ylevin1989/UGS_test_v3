@@ -1,26 +1,30 @@
 "use server";
 
-import fs from "fs/promises";
-import path from "path";
-
-const LEADS_FILE = path.join(process.cwd(), "data", "leads.json");
+import { createClient } from "@/utils/supabase/server";
 
 export async function saveLead(leadData: any) {
     try {
-        const fileContent = await fs.readFile(LEADS_FILE, "utf-8");
-        const leads = JSON.parse(fileContent);
+        const supabase = await createClient();
 
         const newLead = {
-            ...leadData,
-            id: Date.now().toString(),
-            createdAt: new Date().toISOString(),
+            name: leadData.name || 'Unknown',
+            contact: leadData.contact || '',
+            role: leadData.role || leadData.message || '',
             status: "new"
         };
 
-        leads.unshift(newLead);
-        await fs.writeFile(LEADS_FILE, JSON.stringify(leads, null, 2));
+        const { data, error } = await supabase
+            .from('leads')
+            .insert(newLead)
+            .select('*')
+            .single();
 
-        return { success: true, lead: newLead };
+        if (error) {
+            console.error("Supabase insert error:", error);
+            throw error;
+        }
+
+        return { success: true, lead: data };
     } catch (error) {
         console.error("Error saving lead:", error);
         return { success: false, error: "Failed to save lead" };
@@ -29,8 +33,20 @@ export async function saveLead(leadData: any) {
 
 export async function getLeads() {
     try {
-        const fileContent = await fs.readFile(LEADS_FILE, "utf-8");
-        return JSON.parse(fileContent);
+        const supabase = await createClient();
+
+        const { data, error } = await supabase
+            .from('leads')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        // Convert created_at to camelCase format if expected by the frontend
+        return (data || []).map(lead => ({
+            ...lead,
+            createdAt: lead.created_at
+        }));
     } catch (error) {
         console.error("Error getting leads:", error);
         return [];
@@ -39,14 +55,21 @@ export async function getLeads() {
 
 export async function updateLeadStatus(id: string, status: string) {
     try {
-        const fileContent = await fs.readFile(LEADS_FILE, "utf-8");
-        let leads = JSON.parse(fileContent);
+        const supabase = await createClient();
 
-        leads = leads.map((l: any) => l.id === id ? { ...l, status } : l);
+        const { error } = await supabase
+            .from('leads')
+            .update({ status })
+            .eq('id', id);
 
-        await fs.writeFile(LEADS_FILE, JSON.stringify(leads, null, 2));
+        if (error) {
+            console.error("Supabase update error:", error);
+            throw error;
+        }
+
         return { success: true };
     } catch (error) {
+        console.error("Error updating lead status:", error);
         return { success: false };
     }
 }
