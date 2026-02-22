@@ -5,10 +5,16 @@ import { revalidatePath, unstable_cache } from "next/cache";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+
 const getCachedData = unstable_cache(
     async (lang: string) => {
         try {
-            const supabase = await createClient();
+            // Use raw client inside cache to avoid cookies access violation
+            const supabase = createSupabaseClient(
+                process.env.NEXT_PUBLIC_SUPABASE_URL!,
+                process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+            );
 
             const { data, error } = await supabase
                 .from('site_content')
@@ -23,7 +29,10 @@ const getCachedData = unstable_cache(
             console.error(`Error fetching ${lang} content from Supabase:`, e);
             if (lang !== "ru") {
                 try {
-                    const supabase = await createClient();
+                    const supabase = createSupabaseClient(
+                        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+                        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+                    );
                     const { data: fallbackData } = await supabase
                         .from('site_content')
                         .select('content')
