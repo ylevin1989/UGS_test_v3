@@ -25,7 +25,7 @@ export default async function PricingPage() {
 
     return (
         <>
-            <Header phone={content.site.phone} currentLang={lang} />
+            <Header currentLang={lang} />
             <main>
                 {/* Hero mini */}
                 <section className="pt-32 pb-8 relative overflow-hidden">

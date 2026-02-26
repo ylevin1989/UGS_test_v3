@@ -5,9 +5,9 @@ import { getLeads } from "@/app/actions/leads";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2, Mail, ExternalLink, Calendar, User, Phone } from "lucide-react";
-import { toast } from "sonner";
 
 export function LeadsList() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [leads, setLeads] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -19,6 +19,7 @@ export function LeadsList() {
     };
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         loadLeads();
     }, []);
 

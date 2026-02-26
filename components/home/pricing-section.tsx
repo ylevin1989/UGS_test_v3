@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { motion } from "framer-motion";
 import { Rocket, TrendingUp, Heart, Cpu, Building2, ChevronRight, Zap } from "lucide-react";
 import { ClientMotionWrapper } from "@/components/client-motion-wrapper";
 

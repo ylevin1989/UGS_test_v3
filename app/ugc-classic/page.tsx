@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function UgcClassicPage() {
     const result = await getContent();
     if (!result) return null;
-    const { data: content, lang } = result;
+    const { lang } = result;
 
     const t = {
         badge: lang === "ru" ? "Authentic Human Content" : "Authentic Human Content",
@@ -64,7 +64,7 @@ export default async function UgcClassicPage() {
 
     return (
         <>
-            <Header phone={content.site.phone} currentLang={lang} />
+            <Header currentLang={lang} />
             <main className="pt-32 pb-24 overflow-hidden">
                 <div className="container px-4">
                     {/* Hero Section */}

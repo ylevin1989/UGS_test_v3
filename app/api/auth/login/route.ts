@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import bcrypt from "bcryptjs";
+import { signToken } from "@/utils/auth";
 
 export async function POST(req: Request) {
     try {
@@ -27,11 +28,11 @@ export async function POST(req: Request) {
         if (isMatch) {
             const cookieStore = await cookies();
 
-            // Store role and username inside the session cookie value, base64 encoded for simplicity (not secure JWT, but fine for now)
-            const sessionData = Buffer.from(JSON.stringify({
+            // Store role and username inside the session cookie securely using a signed JWT
+            const sessionData = await signToken({
                 username: user.username,
                 role: user.role
-            })).toString('base64');
+            });
 
             cookieStore.set("hyp_auth", sessionData, {
                 httpOnly: true,
@@ -48,7 +49,7 @@ export async function POST(req: Request) {
             { success: false, error: "Invalid credentials" },
             { status: 401 }
         );
-    } catch (error) {
+    } catch {
         return NextResponse.json(
             { success: false, error: "Internal server error" },
             { status: 500 }

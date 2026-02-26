@@ -3,10 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { ContactModal } from "@/components/contact-modal";
 import { ClientMotionWrapper } from "@/components/client-motion-wrapper";
-import Image from "next/image";
-import { ArrowRight, Play, Sparkles, Star, Zap } from "lucide-react";
+import { ArrowRight, Star, Zap } from "lucide-react";
 import { CreatorGrid } from "@/components/home/creator-grid";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function HeroSection({ content, lang = "ru" }: { content: any; lang?: string }) {
     const hero = content.hero;
 

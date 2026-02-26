@@ -33,7 +33,7 @@ export function ImageUpload({ value, onChange, label }: ImageUploadProps) {
             } else {
                 toast.error(result.error || "Ошибка загрузки");
             }
-        } catch (error) {
+        } catch {
             toast.error("Ошибка при подключении к серверу");
         } finally {
             setUploading(false);

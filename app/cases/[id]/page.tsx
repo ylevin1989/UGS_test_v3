@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CASE_STUDIES } from "@/lib/constants";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { CheckCircle2, ArrowLeft, TrendingUp, Users, Target, Zap } from "lucide-react";
+import { ArrowLeft, Target, Zap } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -18,7 +19,6 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const result = await getContent();
-    const lang = result?.lang || "ru";
     const cases = result?.data?.cases || CASE_STUDIES;
     const caseItem = cases.find((c: any) => c.id === id);
 
@@ -67,7 +67,7 @@ export default async function CaseDetailsPage({ params }: { params: Promise<{ id
 
     return (
         <>
-            <Header phone={content.site?.phone} currentLang={lang} />
+            <Header currentLang={lang} />
             <main className="pt-32 pb-24">
                 <div className="container">
                     {/* Back link */}
@@ -148,7 +148,7 @@ export default async function CaseDetailsPage({ params }: { params: Promise<{ id
                                 </h2>
                                 <div className="glass p-10 rounded-[3rem] border-primary/20 bg-primary/5">
                                     <p className="text-2xl italic font-medium leading-relaxed">
-                                        "{caseItem.fullStory || `Our work with ${caseItem.brand} led to significant growth and established a strong UGC presence.`}"
+                                        &quot;{caseItem.fullStory || `Our work with ${caseItem.brand} led to significant growth and established a strong UGC presence.`}&quot;
                                     </p>
                                 </div>
                             </section>

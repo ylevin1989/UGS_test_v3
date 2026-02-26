@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -25,8 +26,7 @@ import {
     Menu,
     X,
     LogOut,
-    Users,
-    CreditCard
+    Users
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Logo } from "@/components/logo";
@@ -68,7 +68,7 @@ export default function AdminPage() {
             toast.success("Logged out successfully");
             router.push("/admin/login");
             router.refresh();
-        } catch (error) {
+        } catch {
             toast.error("Failed to logout");
         }
     };
@@ -862,7 +862,7 @@ export default function AdminPage() {
                         <h2 className="text-2xl font-black uppercase tracking-tight text-white mb-8">Сетка на главной (Hero Grid)</h2>
                         <div className="grid md:grid-cols-1 gap-6 mb-12">
                             <Card className="p-6 glass border-white/10 space-y-4">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Изображение в блоке 'Зачем вам это нужно?'</label>
+                                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500">Изображение в блоке &apos;Зачем вам это нужно?&apos;</label>
                                 <ImageUpload
                                     value={content.homeImages?.businessValue || ""}
                                     onChange={(url) => updateNested('homeImages.businessValue', url)}

@@ -63,7 +63,7 @@ export default async function ContactsPage() {
 
     return (
         <>
-            <Header phone={content.site.phone} currentLang={lang} />
+            <Header currentLang={lang} />
             <main className="pt-32 pb-24">
                 {/* PAGE HEADER */}
                 <div className="container mb-16">

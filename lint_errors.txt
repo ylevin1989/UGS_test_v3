@@ -1,0 +1,203 @@
+
+> ugc-agency@0.1.0 lint
+> eslint
+
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/actions/content.ts
+  74:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  96:66  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/actions/leads.ts
+  5:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/actions/upload.ts
+  18:17  warning  'data' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/admin/login/page.tsx
+  39:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/admin/page.tsx
+   29:5    warning  'CreditCard' is defined but never used                           @typescript-eslint/no-unused-vars
+   56:48   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   57:48   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   71:18   warning  'error' is defined but never used                                @typescript-eslint/no-unused-vars
+  109:48   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  246:63   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  304:65   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  361:67   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  440:67   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  560:89   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  604:71   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  635:78   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  695:71   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  743:70   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  834:77   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  865:135  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  865:156  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  874:74   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/api/auth/login/route.ts
+  51:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/cases/[id]/page.tsx
+    4:10   warning  'CheckCircle2' is defined but never used                         @typescript-eslint/no-unused-vars
+    4:35   warning  'TrendingUp' is defined but never used                           @typescript-eslint/no-unused-vars
+    4:47   warning  'Users' is defined but never used                                @typescript-eslint/no-unused-vars
+   21:11   warning  'lang' is assigned a value but never used                        @typescript-eslint/no-unused-vars
+   23:37   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   49:37   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   97:69   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  151:41   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  151:164  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/cases/page.tsx
+  67:47  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/creators/page.tsx
+   16:10  warning  'Card' is defined but never used          @typescript-eslint/no-unused-vars
+   78:20  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  149:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  188:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  218:80  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/page.tsx
+   48:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  152:62  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  219:66  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  292:54  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  335:64  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/image-upload.tsx
+  36:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/leads-list.tsx
+   8:10  warning  'toast' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+  11:40  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+  22:9   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/leads-list.tsx:22:9
+  20 |
+  21 |     useEffect(() => {
+> 22 |         loadLeads();
+     |         ^^^^^^^^^ Avoid calling setState() directly within an effect
+  23 |     }, []);
+  24 |
+  25 |  react-hooks/set-state-in-effect
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/users-list.tsx
+  13:40  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  20:9   error  Error: Cannot access variable before it is declared
+
+`loadUsers` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/users-list.tsx:20:9
+  18 |
+  19 |     useEffect(() => {
+> 20 |         loadUsers();
+     |         ^^^^^^^^^ `loadUsers` accessed before it is declared
+  21 |     }, []);
+  22 |
+  23 |     const loadUsers = async () => {
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/users-list.tsx:23:5
+  21 |     }, []);
+  22 |
+> 23 |     const loadUsers = async () => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 24 |         setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |         const data = await getUsers();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 26 |         setUsers(data);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 27 |         setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |     };
+     | ^^^^^^^ `loadUsers` is declared here
+  29 |
+  30 |     const handleCreateUser = async () => {
+  31 |         if (!newUsername || !newPassword) {  react-hooks/immutability
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/client-motion-wrapper.tsx
+   6:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  16:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/contact-modal.tsx
+  26:9  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/contact-modal.tsx:26:9
+  24 |
+  25 |     useEffect(() => {
+> 26 |         setMounted(true);
+     |         ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  27 |     }, []);
+  28 |
+  29 |     if (!mounted) {  react-hooks/set-state-in-effect
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/footer-socials.tsx
+  8:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/header.tsx
+  12:26  warning  'phone' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/creator-grid.tsx
+  15:53  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  24:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  52:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/hero-section.tsx
+   6:8   warning  'Image' is defined but never used         @typescript-eslint/no-unused-vars
+   7:22  warning  'Play' is defined but never used          @typescript-eslint/no-unused-vars
+   7:28  warning  'Sparkles' is defined but never used      @typescript-eslint/no-unused-vars
+  10:66  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/pricing-section.tsx
+   3:10  warning  'motion' is defined but never used        @typescript-eslint/no-unused-vars
+  11:9   error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  20:86  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/pricing-teaser.tsx
+  8:85  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/service-selection.tsx
+  3:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+  5:10  warning  'Button' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/stats-section.tsx
+  6:54  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/logo.tsx
+  1:8  warning  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/scripts/migrate-to-supabase.js
+  1:12  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:14  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  3:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/scripts/setup-bucket.js
+  1:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/scripts/setup-db-more.js
+  1:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/scripts/setup-db.js
+  1:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/scripts/test-auth.js
+  1:20  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+  2:16  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+✖ 78 problems (58 errors, 20 warnings)
+

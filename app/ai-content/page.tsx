@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AIContentPage() {
     const result = await getContent();
     if (!result) return null;
-    const { data: content, lang } = result;
+    const { lang } = result;
 
     const t = {
         badge: lang === "ru" ? "AI Powered Production" : "AI Powered Production",
@@ -63,7 +63,7 @@ export default async function AIContentPage() {
 
     return (
         <>
-            <Header phone={content.site.phone} currentLang={lang} />
+            <Header currentLang={lang} />
             <main className="pt-32 pb-24 overflow-hidden">
                 <div className="container px-4">
                     {/* Hero Section */}

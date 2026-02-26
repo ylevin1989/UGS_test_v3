@@ -1,9 +1,19 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
+import { verifyToken } from "@/utils/auth";
 
 export async function uploadImage(formData: FormData) {
     try {
+        const cookieStore = await cookies();
+        const session = cookieStore.get("hyp_auth")?.value;
+        const payload = await verifyToken(session);
+        
+        if (payload?.role !== "Admin") {
+            return { success: false, error: "Unauthorized" };
+        }
+
         const file = formData.get("file") as File;
         if (!file) {
             return { success: false, error: "No file provided" };
@@ -15,7 +25,7 @@ export async function uploadImage(formData: FormData) {
         const filename = `${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
 
         // We use from() to select the bucket and upload() to stream the file to it
-        const { data, error } = await supabase
+        const { error } = await supabase
             .storage
             .from('uploads')
             .upload(filename, file, {

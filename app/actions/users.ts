@@ -3,23 +3,14 @@
 import { createClient } from "@/utils/supabase/server";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
-
-function getSessionRole(sessionData: string | undefined): string | null {
-    if (!sessionData) return null;
-    try {
-        const decoded = Buffer.from(sessionData, 'base64').toString('utf8');
-        const parsed = JSON.parse(decoded);
-        return parsed.role;
-    } catch {
-        return null;
-    }
-}
+import { verifyToken } from "@/utils/auth";
 
 export async function getUsers() {
     try {
         const cookieStore = await cookies();
         const session = cookieStore.get("hyp_auth")?.value;
-        const role = getSessionRole(session);
+        const payload = await verifyToken(session);
+        const role = payload?.role;
 
         // Only Admin can view users
         if (role !== "Admin") {
@@ -44,7 +35,8 @@ export async function createUser(userData: { username: string; password: string;
     try {
         const cookieStore = await cookies();
         const session = cookieStore.get("hyp_auth")?.value;
-        const role = getSessionRole(session);
+        const payload = await verifyToken(session);
+        const role = payload?.role;
 
         // Only Admin can create users
         if (role !== "Admin") {
@@ -85,7 +77,8 @@ export async function deleteUser(id: string) {
     try {
         const cookieStore = await cookies();
         const session = cookieStore.get("hyp_auth")?.value;
-        const role = getSessionRole(session);
+        const payload = await verifyToken(session);
+        const role = payload?.role;
 
         // Only Admin can delete users
         if (role !== "Admin") {

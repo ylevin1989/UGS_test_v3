@@ -4,6 +4,7 @@ import * as React from "react";
 import { revalidatePath, unstable_cache } from "next/cache";
 import { cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
+import { verifyToken } from "@/utils/auth";
 
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 
@@ -71,9 +72,16 @@ export async function setLanguage(lang: string) {
     return { success: true };
 }
 
-export async function updateContent(newData: any, targetLang?: string) {
+export async function updateContent(newData: unknown, targetLang?: string) {
     try {
         const cookieStore = await cookies();
+        const session = cookieStore.get("hyp_auth")?.value;
+        const payload = await verifyToken(session);
+        
+        if (payload?.role !== "Admin") {
+            return { success: false, error: "Unauthorized" };
+        }
+
         const lang = targetLang || cookieStore.get("lang")?.value || "ru";
 
         const supabase = await createClient();
@@ -93,6 +101,3 @@ export async function updateContent(newData: any, targetLang?: string) {
     }
 }
 
-export async function updateContentByLang(lang: string, newData: any) {
-    return updateContent(newData, lang);
-}

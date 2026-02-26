@@ -1,8 +1,10 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
+import { verifyToken } from "@/utils/auth";
 
-export async function saveLead(leadData: any) {
+export async function saveLead(leadData: Record<string, unknown> | { name?: string; contact?: string; role?: string; message?: string }) {
     try {
         const supabase = await createClient();
 
@@ -33,6 +35,14 @@ export async function saveLead(leadData: any) {
 
 export async function getLeads() {
     try {
+        const cookieStore = await cookies();
+        const session = cookieStore.get("hyp_auth")?.value;
+        const payload = await verifyToken(session);
+        
+        if (payload?.role !== "Admin") {
+            return [];
+        }
+
         const supabase = await createClient();
 
         const { data, error } = await supabase
@@ -50,26 +60,5 @@ export async function getLeads() {
     } catch (error) {
         console.error("Error getting leads:", error);
         return [];
-    }
-}
-
-export async function updateLeadStatus(id: string, status: string) {
-    try {
-        const supabase = await createClient();
-
-        const { error } = await supabase
-            .from('leads')
-            .update({ status })
-            .eq('id', id);
-
-        if (error) {
-            console.error("Supabase update error:", error);
-            throw error;
-        }
-
-        return { success: true };
-    } catch (error) {
-        console.error("Error updating lead status:", error);
-        return { success: false };
     }
 }

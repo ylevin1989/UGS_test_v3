@@ -11,6 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/home/hero-section";
@@ -61,7 +62,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <Header phone={content.site.phone} currentLang={lang} />
+      <Header currentLang={lang} />
       <main>
         <HeroSection content={content} lang={lang} />
         <ServiceSelection lang={lang} />

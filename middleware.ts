@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { verifyToken } from '@/utils/auth';
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
 
     // Protect the /admin route
@@ -11,10 +12,12 @@ export function middleware(request: NextRequest) {
             return NextResponse.next();
         }
 
-        // Check for the auth cookie
-        const isAuthenticated = request.cookies.get('hyp_auth');
+        // Check for the auth cookie and verify it's a valid JWT
+        const authCookie = request.cookies.get('hyp_auth');
+        const token = authCookie?.value;
+        const payload = await verifyToken(token);
 
-        if (!isAuthenticated) {
+        if (!payload) {
             const url = new URL('/admin/login', request.url);
             return NextResponse.redirect(url);
         }

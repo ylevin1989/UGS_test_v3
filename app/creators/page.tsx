@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getContent } from "@/app/actions/content";
 import { Metadata } from "next";
 
@@ -13,7 +14,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CREATOR_FAQ } from "@/lib/constants";
 import {
@@ -87,7 +87,7 @@ export default async function CreatorsPage() {
 
     return (
         <>
-            <Header phone={content.site.phone} currentLang={lang} />
+            <Header currentLang={lang} />
             <main className="pt-32 pb-24">
                 {/* HERO */}
                 <div className="container mb-24">

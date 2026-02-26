@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Play, TrendingUp, Users, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { CASE_STUDIES } from "@/lib/constants";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getContent } from "@/app/actions/content";
 import { ContactModal } from "@/components/contact-modal";
 import { ClientMotionWrapper } from "@/components/client-motion-wrapper";
@@ -30,7 +31,7 @@ export default async function CasesPage() {
 
     return (
         <>
-            <Header phone={content.site?.phone} currentLang={lang} />
+            <Header currentLang={lang} />
             <main className="pt-24 lg:pt-32 pb-24">
                 <div className="container">
                     <div className="text-center mb-12 lg:mb-20 max-w-4xl mx-auto space-y-4 px-4">

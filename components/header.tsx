@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LanguageSwitcher } from "./language-switcher";
 
-export function Header({ phone, currentLang = "ru" }: { phone?: string; currentLang?: string }) {
+export function Header({ currentLang = "ru" }: { currentLang?: string }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

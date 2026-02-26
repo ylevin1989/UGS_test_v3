@@ -9,11 +9,11 @@ export default async function PrivacyPage() {
     const result = await getContent();
 
     if (!result) return null;
-    const { data: content, lang } = result;
+    const { lang } = result;
 
     return (
         <>
-            <Header phone={content.site?.phone} currentLang={lang} />
+            <Header currentLang={lang} />
             <main className="py-20 md:py-32">
                 <div className="container max-w-4xl">
                     <div className="space-y-4 mb-12">

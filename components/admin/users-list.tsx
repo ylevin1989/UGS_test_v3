@@ -10,22 +10,24 @@ import { Loader2, UserPlus, Trash2 } from "lucide-react";
 import { getUsers, createUser, deleteUser } from "@/app/actions/users";
 
 export function UsersList() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [users, setUsers] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [newUsername, setNewUsername] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newRole, setNewRole] = useState("Client");
 
-    useEffect(() => {
-        loadUsers();
-    }, []);
-
-    const loadUsers = async () => {
+    async function loadUsers() {
         setLoading(true);
         const data = await getUsers();
         setUsers(data);
         setLoading(false);
-    };
+    }
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        loadUsers();
+    }, []);
 
     const handleCreateUser = async () => {
         if (!newUsername || !newPassword) {

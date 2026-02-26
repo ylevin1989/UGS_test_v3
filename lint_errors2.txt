@@ -1,0 +1,85 @@
+
+> ugc-agency@0.1.0 lint
+> eslint
+
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/actions/leads.ts
+  5:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/app/admin/page.tsx
+   29:5    warning  'CreditCard' is defined but never used                           @typescript-eslint/no-unused-vars
+   56:48   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   57:48   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   71:18   warning  'error' is defined but never used                                @typescript-eslint/no-unused-vars
+  109:48   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  246:63   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  304:65   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  361:67   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  440:67   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  560:89   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  604:71   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  635:78   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  695:71   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  743:70   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  834:77   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  865:135  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  865:156  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  874:74   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/users-list.tsx
+  21:9  error  Error: Cannot access variable before it is declared
+
+`loadUsers` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/users-list.tsx:21:9
+  19 |
+  20 |     useEffect(() => {
+> 21 |         loadUsers();
+     |         ^^^^^^^^^ `loadUsers` accessed before it is declared
+  22 |     }, []);
+  23 |
+  24 |     async function loadUsers() {
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/admin/users-list.tsx:24:5
+  22 |     }, []);
+  23 |
+> 24 |     async function loadUsers() {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 25 |         setLoading(true);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 26 |         const data = await getUsers();
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 27 |         setUsers(data);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |         setLoading(false);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 29 |     }
+     | ^^^^^^ `loadUsers` is declared here
+  30 |
+  31 |     const handleCreateUser = async () => {
+  32 |         if (!newUsername || !newPassword) {  react-hooks/immutability
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/client-motion-wrapper.tsx
+   6:60  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  16:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/header.tsx
+  12:26  warning  'phone' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/creator-grid.tsx
+  15:53  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  24:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  52:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/pricing-teaser.tsx
+  8:85  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/service-selection.tsx
+  1:1  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-explicit-any')
+
+/Users/workspace/.gemini/antigravity/scratch/UGC/components/home/stats-section.tsx
+  6:54  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 29 problems (25 errors, 4 warnings)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+
