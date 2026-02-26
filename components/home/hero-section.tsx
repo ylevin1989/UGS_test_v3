@@ -42,8 +42,8 @@ export function HeroSection({ content, lang = "ru" }: { content: any; lang?: str
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.15 }}
                         >
-                            <h1 className="font-display text-[3rem] sm:text-[5rem] md:text-[6rem] lg:text-[7rem] xl:text-[8rem] leading-[0.85] tracking-tight uppercase mb-8">
-                                <span className="block text-white text-[1.25rem] sm:text-[2rem] md:text-[2.5rem] mb-2 gradient-text-violet lowercase font-sans tracking-normal opacity-80">UGC Performance Agency No.1</span>
+                            <h1 className="font-display text-[3.5rem] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[5rem] xl:text-[6.5rem] 2xl:text-[7rem] leading-[0.85] tracking-tight uppercase mb-8 relative z-20 break-words w-full">
+                                <span className="block text-white text-[1.25rem] sm:text-[1.75rem] md:text-[2rem] mb-3 gradient-text-violet lowercase font-sans tracking-normal opacity-80">UGC Performance Agency No.1</span>
                                 <span className="block text-white">{hero?.title1 || (lang === "ru" ? "ПРЕВРАЩАЕМ" : "TURNING")}</span>
                                 <span className="block gradient-text-aurora">{hero?.title2 || (lang === "ru" ? "ПРОСМОТРЫ" : "VIEWS")}</span>
                                 <span className="block text-white">{hero?.title3 || (lang === "ru" ? "В ДЕНЬГИ" : "INTO MONEY")}</span>
